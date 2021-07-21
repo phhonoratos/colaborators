@@ -1,0 +1,12 @@
+.navBar {
+    display: flex;
+    height: 50px;
+    background-color: lightgrey;
+    align-items: center;
+    justify-content: center;
+}
+
+.navTitle {
+    font-size: 25px;
+    color: orangered;
+}

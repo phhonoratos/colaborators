@@ -1,0 +1,79 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    width: 1050px;
+    border: 1px solid gray;
+}
+
+.nome {
+    width: 400px;
+}
+
+.email {
+    width: 300px;
+}
+
+.cpf {
+    width: 300px;
+}
+
+.cep {
+    width: 220px;
+}
+
+.numero {
+    width: 130px;
+}
+
+.rua {
+    width: 650px;
+}
+
+.complemento {
+    width: 300px;
+}
+
+.cidade {
+    width: 450px;
+}
+
+.estado {
+    width: 250px;
+}
+
+.pais {
+    width: 300px;
+}
+
+.pis {
+    width: 300px;
+    margin-left: 9px;
+}
+
+.senha {
+    width: 300px;
+}
+
+.repsenha {
+    width: 300px;
+    margin-left: 9px;
+}
+
+.pack {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.packtwo {
+    display: flex;
+    flex-direction: row;
+}
