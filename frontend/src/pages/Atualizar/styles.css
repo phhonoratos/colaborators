@@ -1,0 +1,11 @@
+@media screen and (max-width: 375px) {
+    .nome, .email, .cep, .rua, .complemento, .cidade, .pais, .senha {
+        margin-bottom: 10px;
+        width: 315px;
+    }
+
+    .pis, .estado, .cpf, .repsenha {
+        margin-left: 0;
+        width: 315px;
+    }
+}

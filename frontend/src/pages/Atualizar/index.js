@@ -1,8 +1,8 @@
-import LocalStorageService from 'app/service/localStorageService';
 import axios from 'axios';
 import { Field, Formik } from 'formik';
 import React from 'react'
 import Cookies from 'js-cookie'
+import './styles.css'
 
 class Atualizar extends React.Component {
     
