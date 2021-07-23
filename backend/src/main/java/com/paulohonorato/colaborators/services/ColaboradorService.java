@@ -72,8 +72,4 @@ public class ColaboradorService {
         return repository.findById(id);
     }
     
-    public ColaboradorDTO buscaPorEmail(String email) {
-    	return repository.findByEmail(email);
-    }
-
 }

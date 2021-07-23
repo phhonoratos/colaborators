@@ -23,8 +23,8 @@ public class TesteConfig implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Colaborador colab1 = new Colaborador(null, "Paulo", "paulo@email.com", "Brasil", "São Paulo", "São Paulo", "11122233", "Rua da paz", "55", "apto x", "77215599019", "63469126513", encrypt.encode("senhasenha"));
-        Colaborador colab2 = new Colaborador(null, "Pedro", "pedro@email.com", "Brasil", "Sao Paulo", "Sao Paulo", "11122233", "Rua da paz", "55", "apto x", "89058475018", "48871327729", encrypt.encode("senhasenha"));
+        Colaborador colab1 = new Colaborador(null, "Paulo", "paulo@email.com", "Rua Teste", "10", "Casa X", "11122233", "São Paulo", "SP", "Brasil", "77215599019", "63469126513", encrypt.encode("senhasenha"));
+        Colaborador colab2 = new Colaborador(null, "Pedro", "pedro@email.com", "Rua Teste", "10", "Casa X", "11122233", "São Paulo", "SP", "Brasil", "89058475018", "48871327729", encrypt.encode("senhasenha"));
         repository.saveAll(Arrays.asList(colab1, colab2));
     }
     
