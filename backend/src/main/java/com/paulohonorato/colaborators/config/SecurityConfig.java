@@ -40,6 +40,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		if (Arrays.asList(env.getActiveProfiles()).contains("test")) {
 			http.headers().frameOptions().disable();
 		}
+		if (Arrays.asList(env.getActiveProfiles()).contains("dev")) {
+			http.headers().frameOptions().disable();
+		}
+		if (Arrays.asList(env.getActiveProfiles()).contains("prod")) {
+			http.headers().frameOptions().disable();
+		}
 		
 		http.cors().and().csrf().disable();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

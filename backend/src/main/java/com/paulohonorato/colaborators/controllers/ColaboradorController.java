@@ -80,10 +80,4 @@ public class ColaboradorController {
         }).orElseGet(() -> new ResponseEntity("Colaborador não encontrado na base de dados.", HttpStatus.BAD_REQUEST));
     }  
     
-    @GetMapping("/find")
-    public ColaboradorDTO buscarPorEmail(@RequestBody String email) {
-			ColaboradorDTO colaborador = service.buscaPorEmail(email);
-			return colaborador;
-    }
-    
 }
