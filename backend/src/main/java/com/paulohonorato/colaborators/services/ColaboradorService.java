@@ -1,6 +1,5 @@
 package com.paulohonorato.colaborators.services;
 
-
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,11 +10,16 @@ import org.springframework.stereotype.Service;
 
 import com.paulohonorato.colaborators.dtos.ColaboradorDTO;
 import com.paulohonorato.colaborators.entities.Colaborador;
+import com.paulohonorato.colaborators.exceptions.RegraDeNegocioException;
 import com.paulohonorato.colaborators.repositories.ColaboradorRepository;
+import com.paulohonorato.colaborators.utils.ConverterColaborador;
 import com.paulohonorato.colaborators.validations.Validacoes;
 
 @Service
 public class ColaboradorService {
+	
+	@Autowired
+	private ConverterColaborador converter;
 
     @Autowired
     private ColaboradorRepository repository;
@@ -38,15 +42,25 @@ public class ColaboradorService {
         return colaborador;
     }
 
-    public Colaborador cadastrar(Colaborador colaborador) {
-        validar.cadastro(colaborador);
-        return repository.save(colaborador);
+    public ColaboradorDTO cadastrar(ColaboradorDTO colaborador) {
+    	try {
+    		Colaborador colab = converter.toEntity(colaborador);
+        	validar.cadastro(colab);        
+            return new ColaboradorDTO(repository.save(colab));
+		} catch (RegraDeNegocioException e) {
+			throw new RegraDeNegocioException(e.getMessage());
+		}
     }
 
-    public Colaborador atualizar(Colaborador colaborador) {
-        Objects.requireNonNull(colaborador.getId());
-        validar.atualizacao(colaborador);
-        return repository.save(colaborador);
+    public ColaboradorDTO atualizar(ColaboradorDTO colaborador) {
+    	try {
+    		Colaborador colab = converter.toEntity(colaborador);
+            Objects.requireNonNull(colab.getId());
+            validar.atualizacao(colab);
+            return new ColaboradorDTO(repository.save(colab));
+		} catch (RegraDeNegocioException e) {
+			throw new RegraDeNegocioException(e.getMessage());
+		}    	
     }
 
     public void deletar(Colaborador colaborador) {
@@ -56,6 +70,10 @@ public class ColaboradorService {
     
     public Optional<Colaborador> buscarPorId(Long id) {
         return repository.findById(id);
+    }
+    
+    public ColaboradorDTO buscaPorEmail(String email) {
+    	return repository.findByEmail(email);
     }
 
 }

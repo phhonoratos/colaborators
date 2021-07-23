@@ -33,7 +33,7 @@ public class Validacoes {
     }
 
     public void atualizacao(Colaborador colaborador) {
-        if(colaborador.getNome() == null || colaborador.getNome().trim().equals("")) {
+        if(colaborador.getNome() == null || colaborador.getNome().trim().equals("") || colaborador.getNome().length() < 4) {
             throw new RegraDeNegocioException("Informe um NOME com pelo menos 4 letras.");
         }
         if(colaborador.getCep() == null || colaborador.getCep().trim().equals("") || colaborador.getCep().length() < 8) {
