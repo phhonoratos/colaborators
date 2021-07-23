@@ -56,6 +56,10 @@ class Atualizar extends React.Component {
         if(!this.state.nome){
             msgs.push('O campo NOME é obrigatório.')
         }
+
+        if(this.state.nome.length < 4) {
+            msgs.push('O nome deve conter pelo menos 4 caracteres')
+        }
     
         if(!this.state.email) {
             msgs.push('O campo EMAIL é obrigatório.')
@@ -135,6 +139,7 @@ class Atualizar extends React.Component {
             this.props.history.push('/home')
         }).catch( erro => {
             this.setState({msgErro: erro.response.data})
+            alert(erro.response.data)
         })
     }
     

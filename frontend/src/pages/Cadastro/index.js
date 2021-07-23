@@ -30,6 +30,10 @@ class Cadastro extends React.Component {
             msgs.push('O campo NOME é obrigatório.')
         }
 
+        if(this.state.nome.length < 4){
+            msgs.push('O campo NOME deve conter pelo menos 4 caracteres.')
+        }
+
         if(!this.state.email) {
             msgs.push('O campo EMAIL é obrigatório.')
         } else if(!this.state.email.match(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]/)) {
@@ -105,7 +109,7 @@ class Cadastro extends React.Component {
             alert('Cadastro realizado com sucesso!')
             this.props.history.push('/')
         }).catch( erro => {
-            this.setState({msgErro: erro.response})
+            alert(erro.response.data)
         })
     }
 

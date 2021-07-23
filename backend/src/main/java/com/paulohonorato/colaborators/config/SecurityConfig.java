@@ -19,6 +19,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.paulohonorato.colaborators.security.JWTAuthenticationFilter;
 import com.paulohonorato.colaborators.security.JWTUtil;
+import com.paulohonorato.colaborators.utils.ConverterColaborador;
 import com.paulohonorato.colaborators.validations.Validacoes;
 
 @Configuration
@@ -69,5 +70,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public Validacoes validacoes() {
 		return new Validacoes();
+	}
+	
+	@Bean
+	public ConverterColaborador converterColaborador() {
+		return new ConverterColaborador();
 	}
 }
