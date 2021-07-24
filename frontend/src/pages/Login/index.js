@@ -43,14 +43,14 @@ class Login extends React.Component {
                                 value={this.state.email}
                                 onChange={e => this.setState({email: e.target.value})}
                                 className="form-control" 
-                                placeholder="Digite o CPF ou o PIS" />
+                                placeholder="Email" />
                         </div>
                         <div className="form-group mt-4">
                             <input type="password" 
                                 value={this.state.senha}
                                 onChange={e => this.setState({senha: e.target.value})}
                                 className="form-control" 
-                                placeholder="Password" />
+                                placeholder="Senha" />
                         </div>
                         <div className="botoes">
                             <button className="btn btn-success" onClick={this.entrar}>Entrar</button>
