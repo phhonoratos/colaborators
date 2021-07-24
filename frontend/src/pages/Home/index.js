@@ -2,6 +2,7 @@ import LocalStorageService from 'app/service/localStorageService';
 import axios from 'axios';
 import React from 'react'
 import Cookies from 'js-cookie'
+import { BASE_URL } from 'app/utils/requests';
 
 class Home extends React.Component {
 
@@ -20,11 +21,11 @@ class Home extends React.Component {
 
     componentDidMount() {
         const emailAutenticado = LocalStorageService.obterItem('email')
-        axios.post('http://localhost:8080/colaborators/acessar', {
+        axios.post(`${BASE_URL}/colaborators/acessar`, {
             email: emailAutenticado
         }).then( response => {
             Cookies.set('_usuario_logado', `${JSON.stringify(response.data)}`, {expires: 1})
-            axios.get(`http://localhost:8080/colaborators/${response.data.id}`)
+            axios.get(`${BASE_URL}/colaborators/${response.data.id}`)
                 .then(response => {
                     this.setState({nome: response.data.nome})
                 }).catch(erro => {

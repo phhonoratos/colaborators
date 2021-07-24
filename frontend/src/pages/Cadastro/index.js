@@ -3,6 +3,7 @@ import { withRouter} from 'react-router-dom';
 import axios from 'axios';
 import './styles.css'
 import { Formik, Field } from 'formik';
+import { BASE_URL } from 'app/utils/requests';
 
 class Cadastro extends React.Component {
 
@@ -91,7 +92,7 @@ class Cadastro extends React.Component {
             return false;
         }
 
-        axios.post('http://localhost:8080/colaborators', {
+        axios.post(`${BASE_URL}/colaborators`, {
             nome: this.state.nome,
             email: this.state.email,
             pais: this.state.pais,
