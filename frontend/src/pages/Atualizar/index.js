@@ -3,6 +3,7 @@ import { Field, Formik } from 'formik';
 import React from 'react'
 import Cookies from 'js-cookie'
 import './styles.css'
+import { BASE_URL } from 'app/utils/requests';
 
 class Atualizar extends React.Component {
     
@@ -27,7 +28,7 @@ class Atualizar extends React.Component {
     componentDidMount() {
         const colaborador = Cookies.get('_usuario_logado')
         const colabJson = JSON.parse(colaborador)
-        axios.get(`http://localhost:8080/colaborators/${colabJson.id}`)
+        axios.get(`${BASE_URL}/colaborators/${colabJson.id}`)
         .then(response => {
             this.setState({id: colabJson.id})
             this.setState({nome: colabJson.nome})
@@ -119,7 +120,7 @@ class Atualizar extends React.Component {
             return false;
         }
 
-        axios.put(`http://localhost:8080/colaborators/${this.state.id}`, {
+        axios.put(`${BASE_URL}/colaborators/${this.state.id}`, {
             nome: this.state.nome,
             email: this.state.email,
             pais: this.state.pais,
@@ -144,7 +145,7 @@ class Atualizar extends React.Component {
     }
     
     removerCadastro = () => {
-        axios.delete(`http://localhost:8080/colaborators/${this.state.id}`).then( response => {
+        axios.delete(`${BASE_URL}/colaborators/${this.state.id}`).then( response => {
             Cookies.remove('_usuario_logado')
             this.props.history.push('/')
             console.log(response)

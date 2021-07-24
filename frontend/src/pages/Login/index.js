@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import './styles.css'
 import LocalStorageService from 'app/service/localStorageService'
+import { BASE_URL } from 'app/utils/requests'
 
 class Login extends React.Component {
 
@@ -11,7 +12,7 @@ class Login extends React.Component {
     }
 
     entrar = () => {
-        axios.post('http://localhost:8080/login', {
+        axios.post(`${BASE_URL}/login`, {
             email: this.state.email,
             senha: this.state.senha
         }).then( response => {
