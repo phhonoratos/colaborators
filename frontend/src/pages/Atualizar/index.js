@@ -51,7 +51,20 @@ class Atualizar extends React.Component {
         this.props.history.push('/home')
     }
 
-    validar(){
+    validarRemocao() {
+        const msgs = [];
+
+        if(!this.state.senha || !this.state.senhaRepeticao) {
+            msgs.push('Informe a senha para confirmar a remoção do cadastro.')
+        } else if(this.state.senha !== this.state.senhaRepeticao) {
+            msgs.push('As SENHAS não conferem. Por favor digite novamente e confirme.')
+        }
+
+        return msgs;
+
+    }
+
+    validarAtualizacao(){
         const msgs = [];
     
         if(!this.state.nome){
@@ -71,17 +84,33 @@ class Atualizar extends React.Component {
         if(!this.state.cep) {
             msgs.push('O campo CEP é obrigatório.')
         }
+
+        if(this.state.cep.length < 8) {
+            msgs.push('Informe um CEP válido.')
+        }
     
         if(!this.state.numero) {
             msgs.push('O campo NÚMERO é obrigatório.')
         }
-    
+        
+        if(this.state.cpf.length < 11 || this.state.cpf.length > 11) {
+            msgs.push('Informe um CPF válido.')
+        }
+
         if(!this.state.cpf) {
             msgs.push('O campo CPF é obrigatório.')
         }
     
         if(!this.state.pis) {
             msgs.push('O campo PIS é obrigatório.')
+        }
+
+        if(this.state.pis.length < 11 || this.state.pis.length > 11) {
+            msgs.push('Informe um CPF válido.')
+        }
+
+        if(!this.state.senha.length < 8) {
+            msgs.push('A senha deve conter pelo menos 8 caracteres.')
         }
     
         if(!this.state.senha || !this.state.senhaRepeticao) {
@@ -111,7 +140,7 @@ class Atualizar extends React.Component {
     }
         
     atualizar = () => {
-        const msgs = this.validar();
+        const msgs = this.validarAtualizacao();
 
         if(msgs && msgs.length > 0) {
             msgs.forEach((msg, index) => {
@@ -145,6 +174,15 @@ class Atualizar extends React.Component {
     }
     
     removerCadastro = () => {
+        const msgs = this.validarRemocao();
+
+        if(msgs && msgs.length > 0) {
+            msgs.forEach((msg, index) => {
+                alert(msg)
+            });
+            return false;
+        }
+
         axios.delete(`${BASE_URL}/colaborators/${this.state.id}`).then( response => {
             Cookies.remove('_usuario_logado')
             this.props.history.push('/')

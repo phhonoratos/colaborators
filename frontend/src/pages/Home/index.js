@@ -30,7 +30,6 @@ class Home extends React.Component {
                     this.setState({nome: response.data.nome})
                 }).catch(erro => {
                     this.setState({msgErro: erro.response})
-                    console.log('errooooo', erro.response)
                 })
         }).catch( erro => {
             this.setState({msgErro: erro.response})

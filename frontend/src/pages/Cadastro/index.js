@@ -24,7 +24,7 @@ class Cadastro extends React.Component {
         msgErro: null
     }
 
-    validar(){
+    validarCadastro(){
         const msgs = [];
 
         if(!this.state.nome){
@@ -43,6 +43,14 @@ class Cadastro extends React.Component {
 
         if(!this.state.cpf) {
             msgs.push('O campo CPF é obrigatório.')
+        }
+
+        if(this.state.cpf.length < 11 || this.state.cpf.length > 11) {
+            msgs.push('Informe um CPF válido.')
+        }
+
+        if(this.state.cep.length < 8) {
+            msgs.push('Informe um CEP válido.')
         }
 
         if(!this.state.cep) {
@@ -73,6 +81,14 @@ class Cadastro extends React.Component {
             msgs.push('O campo PIS é obrigatório.')
         }
 
+        if(this.state.pis.length < 11 || this.state.pis.length > 11) {
+            msgs.push('Informe um CPF válido.')
+        }
+
+        if(!this.state.senha.length < 8) {
+            msgs.push('A senha deve conter pelo menos 8 caracteres.')
+        }
+
         if(!this.state.senha || !this.state.senhaRepeticao) {
             msgs.push('Informe a SENHA 2x.')
         } else if(this.state.senha !== this.state.senhaRepeticao) {
@@ -83,7 +99,7 @@ class Cadastro extends React.Component {
     }
 
     cadastrar = () => {
-        const msgs = this.validar();
+        const msgs = this.validarCadastro();
 
         if(msgs && msgs.length > 0) {
             msgs.forEach((msg, index) => {
