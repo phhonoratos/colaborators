@@ -38,11 +38,12 @@ Experimente: [Clique aqui](https://colaborators.netlify.app/)
 
 ## 🚀 Como executar o projeto
 
-Este projeto é divido em duas partes:
+Este projeto é divido em três partes:
 1. Backend (pasta backend) 
 2. Frontend (pasta frontend)
+3. Banco de dados local(PostgreSql)
 
-💡 Para que o frontend funcione, é necessário que o projeto backend esteja em execução.
+💡 Para que o frontend funcione, é necessário que o banco de dados esteja configurado e o projeto backend esteja em execução.
 
 ### Pré-requisitos
 
